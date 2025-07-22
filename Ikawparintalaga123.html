@@ -141,6 +141,38 @@
     popup.addEventListener("click", () => {
       popup.classList.remove("show");
     });
-  </script>
+  const display = document.getElementById("display");
+  const popup = document.getElementById("videoPopup");
+
+  function append(value) {
+    display.value += value;
+  }
+
+  function clearDisplay() {
+    display.value = "";
+  }
+
+  function calculate() {
+    try {
+      if (display.value.trim() === "") return; // Prevent empty calculation
+
+      const result = eval(display.value);
+
+      if (!isNaN(result)) {
+        display.value = result;
+        popup.classList.add("show");
+      } else {
+        display.value = "Error";
+      }
+    } catch {
+      display.value = "Error";
+    }
+  }
+
+  popup.addEventListener("click", () => {
+    popup.classList.remove("show");
+  });
+</script>
+  
 </body>
 </html>
